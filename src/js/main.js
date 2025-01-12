@@ -42,7 +42,6 @@ function likedMoviesList() {
 
 function likeMovie(movie) {
     const likedMovies = likedMoviesList();
-    console.log(likedMovies)
     if (likedMovies[movie.id]) {
         likedMovies[movie.id] = undefined;
     } else {
@@ -55,7 +54,6 @@ function likeMovie(movie) {
 // utils
 const lazyLoader = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        console.log({entry})
         if(entry.intersectionRatio) {
             const url = entry.target.getAttribute('data-img')
             entry.target.setAttribute('src', url)
@@ -128,7 +126,6 @@ function createCategories (categories, container){
 export async function getTrendingMoviesPreview(){
     const {data} = await api('trending/movie/day');
     const movies = data.results;
-    console.log({data, movies});
     trendingMoviesPreviewList.innerHTML = "";
     createMovies(movies, trendingMoviesPreviewList, true)
 }
@@ -141,7 +138,6 @@ export async function getCategoriesPreview(){
 }
 
 export async function getMoviesByCategories(id){
-    console.log(`fetching movies for category id: ${id}`);
     const {data} = await api('discover/movie', {
         params:{
             with_genres: id,
@@ -200,7 +196,6 @@ export async function getPaginatedTrendingMovies() {
                 page,
             },
         });
-        console.log('aqui', data);
         const movies = data.results;
         createMovies(movies, genericSection, { lazyLoad: true, clean: false });
         }
