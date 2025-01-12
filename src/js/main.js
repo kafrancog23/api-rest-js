@@ -1,4 +1,4 @@
-import { API_KEY } from '../utils/secrets.js';
+import { API_KEY } from './secrets.js';
 import {
     trendingMoviesPreviewList,
     categoriesPreviewList,
